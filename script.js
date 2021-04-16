@@ -29,13 +29,27 @@ const renderError = function(err) {
 const getCurPos = function() {
     return new Promise(function(resolve, reject) {
 
-        navigator.geolocation.getCurrentPosition(resolve, reject);              
+        navigator.geolocation.getCurrentPosition(resolve, err => {
+            let message;
+
+            switch(err.code)
+            {
+              case 1: message = 'Permission Denied' ; break;
+              case 2: message = 'Position Unavailable'; break;
+              case 3: message = 'Operation Timed Out'; break;
+              case 4: message = 'Unkown Error'; break;
+            }
+
+            reject(`Geolocation Error: ${message}`);
+        });           
 
     });
 };
 
 const whereAmI = function() {
     getCurPos().then(pos => {
+        if(!pos) throw new Error(err => err);
+        
         console.log(pos);
         const {latitude: lat , longitude: lng} = pos.coords;
 
