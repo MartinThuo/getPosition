@@ -1,6 +1,4 @@
-Motivation from CompleteJS by Jonas Schmedtman 😎😎
-
-# Coding Challenge
+# Challenge Yourself
 
 In this challenge you will build a function 'whereAmI' which renders a country ONLY based on GPS coordinates. For that, you will use a second API to geocode coordinates.
 
@@ -23,3 +21,5 @@ PART 1
     This API allows you to make only 3 requests per second. If you reload fast, you will get this error with code 403.
     This is an error with the request. Remember, fetch() does NOT reject the promise in this case.
     So create an error to reject the promise yourself, with a meaningful error message.
+
+Motivation from CompleteJS by Jonas Schmedtman 😎😎
