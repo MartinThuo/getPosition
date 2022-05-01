@@ -7,6 +7,7 @@ The app is an original idea of [Jonas Schmedtman](www.jonas.io)
 ## Features
 
 - Vannila JS
+- Geocoding
 - Asynchronous JavaScript - promises
 - Fetching from API
 - Advanced Objects Lookup
