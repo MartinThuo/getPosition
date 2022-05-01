@@ -12,6 +12,12 @@ The app is an original idea of [Jonas Schmedtman](www.jonas.io)
 - Advanced Objects Lookup
 - Destructuring
 
+## Screen shots
+
+![Screen_Shot_1](./res/Screen_Shot_1.png)
+
+![Screen_Shot_2](./res/Screen_Shot_2.png)
+
 ## Implementation
 - [x] 'reverse geocoding' of the provided coordinates. https://geocode.xyz/api
 - [x] Chain a .catch method to the end of the promise chain and log errors to the console
