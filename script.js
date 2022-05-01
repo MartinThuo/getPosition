@@ -6,13 +6,13 @@ const countriesContainer = document.querySelector('.countries');
 const renderCountry = function(data, className = '') {
     const html = `
         <article class="country ${className}">
-            <img class="country__img" src="${data.flag}" />
+            <img class="country__img" src="${data.flags.svg}" />
             <div class="country__data">
-                <h3 class="country__name">${data.name}</h3>
+                <h3 class="country__name">${data.name.common}</h3>
                 <h4 class="country__region">${data.region}</h4>
                 <p class="country__row"><span>👫</span>${(+data.population / 1000000).toFixed(1)}</p>
-                <p class="country__row"><span>🗣️</span>${data.languages[0].name}</p>
-                <p class="country__row"><span>💰</span>${data.currencies[0].name}</p>
+                <p class="country__row"><span>🗣️</span>${Object.values(data.languages)[0]}</p>
+                <p class="country__row"><span>💰</span>${Object.values(data.currencies)[0].name}</p>
         </div>
         </article>
     `;
@@ -47,9 +47,9 @@ const whereAmI = function() {
         return res.json();
     })
     .then(data => {
+        // console.log(data);
         const country = data.country;
-        console.log(country);
-        return fetch(`https://restcountries.eu/rest/v2/name/${country}`);
+        return fetch(`https://restcountries.com/v3.1/name/${country}`);
     })
     .then(res => {
         if (!res.ok)
@@ -59,24 +59,25 @@ const whereAmI = function() {
     })
     .then(data => {
         countriesContainer.innerHTML = '';
-
+        console.log(data[0]);
         renderCountry(data[0]);
 
         const neighbour = data[0].borders[0];
 
         if(!neighbour) return;
 
-        return fetch(`https://restcountries.eu/rest/v2/alpha/${neighbour}`);
+        return fetch(`https://restcountries.com/v3.1/alpha/${neighbour}`);
     })
     .then(res => {
         if(!res.ok)
             throw new Error(`Country not found (${res.status})`);
-
         return res.json()
     })
     .then(data => {
-        console.log(data);
-        renderCountry(data, 'neighbour')
+        console.log(data[0]);
+        console.log(Object.values(data[0].languages)[0]);
+        console.log(Object.values(data[0].currencies)[0].name)
+        renderCountry(data[0], 'neighbour')
     })
     .catch(err => {
         renderError(`Something went wrong ${err.message}`)
