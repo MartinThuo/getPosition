@@ -9,6 +9,8 @@ The app is an original idea of [Jonas Schmedtman](www.jonas.io)
 - Vannila JS
 - Asynchronous JavaScript - promises
 - Fetching from API
+- Advanced Objects Lookup
+- Destructuring
 
 ## Implementation
 - [x] 'reverse geocoding' of the provided coordinates. https://geocode.xyz/api
